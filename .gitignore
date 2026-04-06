@@ -1,0 +1,14 @@
+# --- Backend (Server) ---
+server/node_modules/
+server/.env
+
+# --- Frontend (Client) ---
+client/node_modules/
+client/dist/
+client/.env
+client/.env.local
+
+# --- General System Files ---
+.DS_Store
+Thumbs.db
+*.log
