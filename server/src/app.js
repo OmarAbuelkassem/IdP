@@ -26,7 +26,7 @@ const corsOptions = {
 
 // 2. The "Preflight" Fix
 // This tells Express: "If ANY route gets an OPTIONS request, respond with the CORS headers immediately"
-app.options("*", cors(corsOptions));
+app.options("/{*path}", cors(corsOptions));
 
 // 3. The Global Policy
 // This applies the headers to the actual GET/POST requests
