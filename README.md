@@ -5,7 +5,7 @@
 ![React version](https://img.shields.io/badge/react-%5E18.0.0-blue?style=flat-square)
 ![Tailwind](https://img.shields.io/badge/tailwind-style-38bdf8?style=flat-square)
 
-![SecureAuth Demo](client\public\SecureAuthDemo.gif)
+![SecureAuth Demo](./client/public/SecureAuthDemo.gif)
 
 A lightweight Identity Provider (IdP) focused on secure authentication and minimalist design.
 
