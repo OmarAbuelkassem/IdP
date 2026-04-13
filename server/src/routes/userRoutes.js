@@ -1,9 +1,9 @@
 import express from "express";
-import { protect } from "../middlewares/private";
+import { protect } from "../middlewares/private.js";
 
-router = express.Router();
+const userRouter = express.Router();
 
-router.get("/profile", protect, (req, res) => {
+userRouter.get("/profile", protect, (req, res) => {
   res.status(200).json({
     status: "success",
     data: {
@@ -11,3 +11,5 @@ router.get("/profile", protect, (req, res) => {
     },
   });
 });
+
+export default userRouter;

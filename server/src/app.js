@@ -3,6 +3,7 @@ import cors from "cors";
 import helmet from "helmet";
 import cookieParser from "cookie-parser";
 import router from "./routes/authRoutes.js";
+import userRouter from "./routes/userRoutes.js";
 
 const app = express();
 app.use(express.json());
@@ -33,6 +34,7 @@ app.options("/{*path}", cors(corsOptions));
 app.use(cors(corsOptions));
 
 app.use("/auth", router);
+app.use("/", userRouter);
 
 app.get("/server", (req, res) => {
   res.status(200).json({ status: "OK", message: "Identity Provider is live." });
@@ -40,10 +42,18 @@ app.get("/server", (req, res) => {
 
 // Global Error Handler
 app.use((err, req, res, next) => {
-  console.error(err.stack);
-  res.status(500).json({
-    status: "error",
-    message: "Something went wrong on the server!",
+  // 1. Log the full stack trace in your terminal so YOU can see it
+  console.error("DEBUGGER LOG:", err.stack);
+
+  // 2. Extract the status code (default to 500 if not set)
+  const statusCode = err.statusCode || 500;
+
+  // 3. Send the ACTUAL error message to the frontend
+  res.status(statusCode).json({
+    status: err.status || "error",
+    message: err.message || "An unexpected error occurred", // <--- This is the key!
+    // Optional: Only send the stack trace if you are in development mode
+    stack: process.env.NODE_ENV === "development" ? err.stack : undefined,
   });
 });
 export default app;

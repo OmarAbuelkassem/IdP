@@ -19,7 +19,7 @@ const Register = () => {
     e.preventDefault();
     try {
       // We send the data to your Node.js /auth/register endpoint
-      await api.post("/auth/register", formData);
+      await api.post("/register", formData);
 
       // If successful, send them to login
       alert("Account created! Please login.");
@@ -35,12 +35,12 @@ const Register = () => {
       {error && <p style={{ color: "red" }}>{error}</p>}
 
       <form onSubmit={handleSubmit}>
-        <input
+        {/* <input
           name="username"
           placeholder="Username"
           onChange={handleChange}
           required
-        />
+        /> */}
         <input
           name="email"
           type="email"

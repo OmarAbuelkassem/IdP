@@ -8,6 +8,7 @@ import { useAuth } from "./hooks/useAuth";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Login from "./components/Login";
 import Register from "./components/Register";
+import PingButton from "./components/ping";
 
 const Dashboard = () => <h2>Dashboard (Private - Omar Only!)</h2>;
 const Hello = () => <h2>Hello.</h2>;
@@ -21,6 +22,7 @@ const App = () => {
       <Routes>
         {/* Public Routes */}
         <Route path="/" element={<Hello />} />
+        <Route path="/ping" element={<PingButton />} />
 
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
